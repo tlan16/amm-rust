@@ -5,4 +5,4 @@ clean:
 build:
 	cargo build --release
 	cp ./target/release/amm-rust ./dist/amm-rust
-	upx -9 ./dist/amm-rust
+	upx -9 --ultra-brute ./dist/amm-rust
