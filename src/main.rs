@@ -41,7 +41,10 @@ struct MainLoop {
 }
 
 fn main_loop(options: &mut MainLoop) {
-    let Point { x, y } = options.mouse.get_position().expect(goldberg_string!("failed to get mouse position"));
+    let Point { x, y } = options
+        .mouse
+        .get_position()
+        .expect(goldberg_string!("failed to get mouse position"));
     let gap = Point {
         x: (options.previous_x.unwrap_or(x) - x).abs(),
         y: (options.previous_y.unwrap_or(y) - y).abs(),
@@ -50,7 +53,11 @@ fn main_loop(options: &mut MainLoop) {
     options.previous_y = Some(y);
 
     debug!("{} {:?}", goldberg_string!("gap: "), gap);
-    debug!("{} {}", goldberg_string!("idle counter:"), options.idle_counter);
+    debug!(
+        "{} {}",
+        goldberg_string!("idle counter:"),
+        options.idle_counter
+    );
     debug!(
         "{} ({}, {})",
         goldberg_string!("previous position:"),
@@ -72,7 +79,11 @@ fn main_loop(options: &mut MainLoop) {
             options.idle_detection_delay_seconds,
         ));
         options.idle_counter += 1;
-        debug!("{} {}", goldberg_string!("increment idle counter to"), options.idle_counter);
+        debug!(
+            "{} {}",
+            goldberg_string!("increment idle counter to"),
+            options.idle_counter
+        );
         return;
     }
 
