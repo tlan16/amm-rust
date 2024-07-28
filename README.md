@@ -1,6 +1,6 @@
 # Another Mouse Mover
 
-Written in rust
+Written in rust with best effert obsugation. 
 
 ### Build and install
 ```bash
