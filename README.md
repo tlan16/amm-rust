@@ -1,13 +1,15 @@
+### Build and install
 ```bash
 make clean build
 sudo make install
 ```
 
+### Usage
 ```bash
 amm-rust
 ```
 
-To enable debug:
+With debug message:
 ```bash
 amm-rust -v
 ```
