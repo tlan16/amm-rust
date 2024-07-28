@@ -6,6 +6,7 @@ version = 3
 name = "amm-rust"
 version = "0.1.0"
 dependencies = [
+ "goldberg",
  "log",
  "log4rs",
  "mouse-rs",
@@ -211,6 +212,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "goldberg"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d2d9cbd1fdba1a34e35404e93aab99efbf14076ab4c3380b4d408f7cd3cd9710"
+dependencies = [
+ "moisture",
+ "proc-macro2",
+ "quote",
+ "rand 0.8.5",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "hashbrown"
 version = "0.14.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -337,6 +351,17 @@ dependencies = [
  "thread-id",
  "typemap-ors",
  "winapi",
+]
+
+[[package]]
+name = "moisture"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da1c12ec95f955162f01e673f383afd3f1306a5d7254f0aa38c4d219066ad7b0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
 ]
 
 [[package]]

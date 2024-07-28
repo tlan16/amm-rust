@@ -1,9 +1,10 @@
 use std::thread::sleep;
 use std::time;
 
+use goldberg::{goldberg_int, goldberg_string};
 use log::debug;
-use mouse_rs::types::Point;
 use mouse_rs::Mouse;
+use mouse_rs::types::Point;
 
 use crate::get_random_int::{get_random_i32, get_random_u64};
 use crate::logger::init_logger;
@@ -18,10 +19,10 @@ fn main() {
         mouse: Mouse::new(),
         previous_x: None,
         previous_y: None,
-        idle_counter: 0,
-        idle_margin: 100,
-        idle_detection_delay_seconds: 1,
-        idle_threshold: 4,
+        idle_counter: goldberg_int!(0),
+        idle_margin: goldberg_int!(100),
+        idle_detection_delay_seconds: goldberg_int!(1),
+        idle_threshold: goldberg_int!(4),
     };
 
     loop {
@@ -40,7 +41,7 @@ struct MainLoop {
 }
 
 fn main_loop(options: &mut MainLoop) {
-    let Point { x, y } = options.mouse.get_position().expect("F_C_P");
+    let Point { x, y } = options.mouse.get_position().expect(goldberg_string!("failed to get mouse position"));
     let gap = Point {
         x: (options.previous_x.unwrap_or(x) - x).abs(),
         y: (options.previous_y.unwrap_or(y) - y).abs(),
@@ -48,10 +49,11 @@ fn main_loop(options: &mut MainLoop) {
     options.previous_x = Some(x);
     options.previous_y = Some(y);
 
-    debug!("gap: {:?}", gap);
-    debug!("idle counter: {}", options.idle_counter);
+    debug!("{} {:?}", goldberg_string!("gap: "), gap);
+    debug!("{} {}", goldberg_string!("idle counter:"), options.idle_counter);
     debug!(
-        "previous position: ({}, {})",
+        "{} ({}, {})",
+        goldberg_string!("previous position:"),
         options.previous_x.unwrap(),
         options.previous_y.unwrap()
     );
@@ -61,7 +63,7 @@ fn main_loop(options: &mut MainLoop) {
             options.idle_detection_delay_seconds,
         ));
         options.idle_counter = 0;
-        debug!("reset idle counter");
+        debug!("{}", goldberg_string!("reset idle counter").to_owned());
         return;
     }
 
@@ -70,11 +72,11 @@ fn main_loop(options: &mut MainLoop) {
             options.idle_detection_delay_seconds,
         ));
         options.idle_counter += 1;
-        debug!("increment idle counter to {}", options.idle_counter);
+        debug!("{} {}", goldberg_string!("increment idle counter to"), options.idle_counter);
         return;
     }
 
-    debug!("moving mouse");
+    debug!("{}", goldberg_string!("idle detected, moving mouse"));
     options
         .mouse
         .move_to(
@@ -87,7 +89,7 @@ fn main_loop(options: &mut MainLoop) {
                 .unwrap_or(options.mouse.get_position().unwrap().y))
                 + get_random_i32(-10, 10),
         )
-        .expect("F_MV");
+        .expect(goldberg_string!("failed to move mouse"));
     sleep(time::Duration::from_secs(get_random_u64(
         options.idle_detection_delay_seconds,
         5u64,

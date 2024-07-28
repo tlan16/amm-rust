@@ -1,8 +1,0 @@
----
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./target:/app/target
