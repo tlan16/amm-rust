@@ -1,4 +1,4 @@
-# Another mouse mover
+# Another Mouse Mover
 
 Written in rust
 
