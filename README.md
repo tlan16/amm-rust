@@ -1,3 +1,7 @@
+# Another mouse mover
+
+Written in rust
+
 ### Build and install
 ```bash
 make clean build
