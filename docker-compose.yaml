@@ -1,0 +1,8 @@
+services:
+  amm-rust:
+    container_name: amm-rust
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./dist:/dist

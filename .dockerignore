@@ -1,2 +1,10 @@
 /target
 .idea/
+.git/
+.gitignore
+.github/
+/LICENSE
+/docker-compose.yaml
+/Dockerfile
+/.editorconfig
+/README.md

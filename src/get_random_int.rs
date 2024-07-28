@@ -24,7 +24,7 @@ mod tests {
     #[test]
     fn test_get_random_u64() {
         let result = get_random_u64(0, 10);
-        assert!(result >= 0);
+        assert!(result >= 1);
         assert!(result <= 10);
     }
 }
