@@ -19,6 +19,7 @@
         "patch",
         "major"
       ],
+      "platformAutomerge": true,
     }
   ],
   "prHourlyLimit": 99
