@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 rust:1.80.1-bookworm AS builder-x86_64-unknown-linux-gnu
+FROM --platform=linux/amd64 rust:1.81.0-bookworm AS builder-x86_64-unknown-linux-gnu
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -11,7 +11,7 @@ RUN rustup target add x86_64-unknown-linux-gnu
 RUN cargo test --target=x86_64-unknown-linux-gnu
 RUN cargo build --release --target=x86_64-unknown-linux-gnu
 
-FROM --platform=linux/arm64 rust:1.80.1-bookworm AS builder-aarch64-unknown-linux-gnu
+FROM --platform=linux/arm64 rust:1.81.0-bookworm AS builder-aarch64-unknown-linux-gnu
 # OS dependencies
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
@@ -26,7 +26,7 @@ RUN cargo test --target=aarch64-unknown-linux-gnu
 RUN cargo build --release --target=aarch64-unknown-linux-gnu
 
 FROM crazymax/osxcross:14.5-r0-debian AS osxcross
-FROM rust:1.80.1-bookworm AS apple-base
+FROM rust:1.81.0-bookworm AS apple-base
 
 RUN apt-get update && apt-get install -y \
     libxdo-dev \
