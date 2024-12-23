@@ -2,6 +2,8 @@
 
 Written in rust with best effert obsugation. 
 
+Archieved this as it moves the mouse to doesn't defeat management software/spyware. 
+
 ### Build and install
 ```bash
 make clean build
